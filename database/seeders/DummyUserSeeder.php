@@ -14,15 +14,15 @@ class DummyUserSeeder extends Seeder
      */
     public function run(): void
     {
-        /* User::create([ 
+        User::create([ 
             'name' => 'Admin', 
             'email' => 'admin@example.com', 
             'password' => Hash::make('password') 
-        ]); */
-        User::create([ 
+        ]);
+        /* User::create([ 
             'name' => 'Argorahayu', 
             'email' => 'pbw@gmail.com', 
             'password' => Hash::make('2ks3') 
-        ]);
+        ]); */
     }
 }
