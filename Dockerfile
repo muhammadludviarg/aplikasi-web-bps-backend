@@ -42,9 +42,15 @@ COPY . /var/www/html
 # Salin dependensi dari stage 'vendor'
 COPY --from=vendor /app/vendor /var/www/html/vendor
 
+# Salin script start.sh ke dalam container
+COPY start.sh /usr/local/bin/start.sh
+
+# Jadikan script tersebut executable (bisa dijalankan)
+RUN chmod +x /usr/local/bin/start.sh
+
 # Atur permission untuk folder storage dan bootstrap/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Expose port 80 untuk Apache
-EXPOSE 80
+# Ganti perintah startup default dengan script kita
+CMD ["start.sh"]
